@@ -14,8 +14,8 @@ const quickRef = {
     { label: 'Scope Control', value: 'Change Request (CR)' },
     { label: 'Task Breakdown', value: 'WBS' },
     { label: 'Risk Tool', value: 'Risk Register' },
+    { label: 'RACI: One rule', value: 'Exactly ONE Accountable' },
     { label: 'Client Handoff', value: 'UAT Sign-off' },
-    { label: 'Team Assignments', value: 'RACI Matrix' },
   ],
   metrics: [
     { label: 'Defect Leakage Goal', value: '< 2%' },
@@ -29,9 +29,9 @@ const quickRef = {
     { label: 'Sprint Duration', value: '2 weeks' },
     { label: 'Daily Standup', value: '15 minutes' },
     { label: 'Ideal Team Size', value: '5–9 people' },
-    { label: 'Sprint Planning', value: '4–8 hours' },
-    { label: 'Retrospective', value: '1–3 hours' },
-    { label: 'Sprint Review', value: '2–4 hours' },
+    { label: 'SAFe PI Duration', value: '8–12 weeks' },
+    { label: 'PI Predictability', value: '≥ 80% objectives' },
+    { label: 'ART Sync', value: 'Weekly, 30–60 mins' },
   ],
   sixsigma: [
     { label: 'DMAIC Steps', value: 'D-M-A-I-C' },
@@ -152,6 +152,108 @@ Think of a PM as the **captain of a ship** — you don't row every oar, but you 
 
 **Content Dependency** — Developers can't build the blog page if content team hasn't written articles.
 → PM manages these **dependencies** in the project plan and sets deadlines for content team.`
+      },
+      {
+        title: "RACI Matrix — What It Is & How to Use It",
+        content: `**What is a RACI Matrix?**
+A RACI Matrix is a simple but powerful tool that tells everyone on a project exactly WHO does WHAT. It eliminates confusion, prevents duplication of work, and ensures nothing falls through the cracks.
+
+Without a RACI, you get situations like:
+• Two people both think they are responsible for a task → they step on each other
+• Nobody thinks they are responsible for a task → it never gets done
+• The client gets 4 different emails from 4 different people on the same topic → chaos
+• A decision gets made without consulting the right person → it gets reversed later
+
+RACI solves all of this upfront.
+
+**What Does RACI Stand For?**
+
+📌 **R — Responsible**
+The person who DOES the work. They roll up their sleeves and execute the task.
+There can be MORE THAN ONE person who is Responsible (e.g., two developers building a feature together).
+But having too many R's on one task causes confusion — keep it focused.
+Example: Developer is Responsible for building the login page.
+
+📌 **A — Accountable**
+The person who OWNS the outcome. They are answerable if the work is not done or done wrong.
+There must be EXACTLY ONE Accountable person per task — never more, never zero.
+The Accountable person approves the work done by the Responsible person.
+Example: The PM is Accountable for the login page being delivered on time and to standard. The developer builds it, but the PM owns the outcome.
+Key insight: You can delegate Responsibility, but you cannot delegate Accountability. As PM, you remain Accountable even when someone else does the work.
+
+📌 **C — Consulted**
+People whose input or expertise is needed BEFORE the work is done or a decision is made.
+Communication is TWO-WAY — you ask them, they respond, their input shapes the work.
+Example: The Security Architect is Consulted before the login page design is finalised — to ensure it meets security standards.
+
+📌 **I — Informed**
+People who need to be KEPT IN THE LOOP after decisions are made or work is completed.
+Communication is ONE-WAY — you tell them, they don't need to respond or act.
+Example: The CEO is Informed when the login page goes live — they don't need to approve it, but they should know.
+
+**The Golden Rules of RACI:**
+✅ Every task must have exactly ONE A (Accountable)
+✅ Every task must have at least ONE R (Responsible)
+✅ R and A can be the same person for simple tasks
+✅ Too many C's slow down decisions — consult only who truly needs to be consulted
+✅ When in doubt, make someone I (Informed) rather than C (Consulted)
+✅ Build the RACI at project kickoff — before work starts
+
+**RACI Matrix Example — Website Development Project:**
+
+| Task | PM | Developer | Designer | QA | Client | Legal |
+|------|----|-----------|----------|----|--------|-------|
+| Define project scope | A | C | C | I | C | I |
+| Create wireframes | I | C | R | C | C | I |
+| Build homepage | I | R | C | I | I | I |
+| Write content | C | I | I | I | R | C |
+| Test for bugs | A | C | I | R | I | I |
+| Security review | A | C | I | C | I | R |
+| Final launch approval | C | I | I | I | A | C |
+| Post-launch monitoring | A | R | I | R | I | I |
+
+Reading this table:
+→ The PM is Accountable for testing and post-launch, but QA is Responsible for doing the actual testing
+→ The Client is Accountable for final launch approval — meaning if they delay sign-off, that's on them
+→ Legal is Responsible for the security review — PM is Accountable for making sure it happens
+
+**RACI for a Maps Development Project:**
+
+| Task | PM | Data Engineer | GIS Analyst | QA | Client | Vendor |
+|------|----|--------------|-------------|-----|--------|--------|
+| Define data coverage scope | A | C | C | I | C | I |
+| Collect map data | I | R | C | I | I | R |
+| Validate POI accuracy | A | C | R | R | I | I |
+| Build rendering pipeline | I | R | I | C | I | I |
+| Performance testing | A | C | I | R | I | I |
+| Client UAT | C | I | I | C | A | I |
+| Production deployment | A | R | I | C | I | I |
+
+**Where to Use RACI in Practice:**
+
+1️⃣ **At Project Kickoff** — Build the RACI before any work starts. Share it with all stakeholders so everyone knows their role from Day 1.
+
+2️⃣ **When Onboarding New Team Members** — "Here's the RACI — this shows exactly what you own and who you need to work with."
+
+3️⃣ **When a Task Has No Owner** — If something keeps getting dropped, add it to the RACI and assign an A immediately.
+
+4️⃣ **When There's a Conflict** — Two people both claiming ownership of a decision? Pull out the RACI. It's the referee.
+
+5️⃣ **During Escalations** — "According to our RACI, the client is Accountable for content delivery by Week 3. They have missed this deadline, which is impacting our timeline."
+
+6️⃣ **For Cross-Team Dependencies in SAFe** — In PI Planning, build a RACI for shared features that span multiple Agile teams. Prevents "I thought your team was building that" situations.
+
+7️⃣ **For Governance Activities** — Who approves the budget change? Who is informed of the steering committee decision? RACI answers this.
+
+**Common RACI Mistakes to Avoid:**
+❌ Having two A's on the same task — creates conflict, no clear final owner
+❌ Making the PM Responsible for everything — PM should be Accountable, not doing all the work
+❌ Forgetting the client in the RACI — they have responsibilities too (content, approvals, UAT)
+❌ Building RACI after problems arise — it must be built BEFORE work starts
+❌ Never updating it — as team changes or scope changes, update the RACI
+
+**Interview Answer for "How do you manage roles and responsibilities on a project?"**
+"I build a RACI Matrix at project kickoff for every significant workstream. RACI defines who is Responsible for doing the work, who is Accountable for the outcome, who needs to be Consulted before decisions, and who needs to be Informed afterward. I ensure every task has exactly one Accountable owner — because shared accountability means no accountability. I share the RACI with the full team and client at kickoff, review it when the team changes, and use it as the reference point whenever a conflict arises about who owns what. In my maps projects, RACI was especially important because we had data teams, engineering teams, QA, and client stakeholders all working on overlapping deliverables across different timezones."`
       },
       {
         title: "Scope Creep — What It Is & How to Control It",
@@ -454,6 +556,169 @@ Example output: "We waste 30 mins every day in stand-up because people are late 
 ✅ Hold **Backlog Grooming** every week — review and refine upcoming stories
 ✅ Use a **Definition of Done (DoD)** — agree upfront what "complete" means
 ✅ Escalate blockers same day — don't let a blocker sit for 3 days`
+      },
+      {
+        title: "SAFe — Scaled Agile Framework (Agile for Multiple Teams)",
+        content: `**Why Scrum Alone Is Not Enough at Scale**
+Scrum works beautifully for ONE team of 5–9 people. But imagine Infosys delivering a large enterprise platform for a banking client — with 6 teams, 60 people, all building different parts of the SAME product simultaneously. If each team runs their own Scrum independently, you get:
+• Teams finishing features that depend on another team's unfinished work
+• No shared release date — each team ships whenever they're ready
+• Conflicting priorities — Team A optimises for speed, Team B optimises for quality
+• Leadership has no single view of overall delivery progress
+
+This is exactly the problem **SAFe (Scaled Agile Framework)** solves.
+
+Think of it this way:
+• Scrum = One band playing a song
+• SAFe = A full orchestra — 10 sections, 60 musicians — all playing the SAME symphony in perfect sync
+
+**The SAFe Levels — From Small to Large:**
+
+📌 **Level 1 — Team Level**
+Individual Scrum teams running 2-week sprints. You already know this.
+Each team has: Product Owner, Scrum Master, Development Team.
+Nothing changes at this level — SAFe builds ON TOP of Scrum, not instead of it.
+
+📌 **Level 2 — Program Level (Most Important for Senior PM)**
+Multiple Scrum teams (typically 5 to 12) working together as one unit called an **Agile Release Train (ART)**.
+The ART runs on a larger timebox called a **PI (Program Increment)** — 8 to 12 weeks long.
+All teams in the ART work toward shared PI Objectives and release together.
+Key roles at this level:
+→ **Release Train Engineer (RTE)**: The "Scrum Master" for the entire ART. Senior PMs often play this role at Infosys.
+→ **Product Manager**: Owns the Program Backlog (features, not stories).
+→ **System Architect**: Provides technical direction across all teams.
+
+📌 **Level 3 — Portfolio Level**
+Multiple ARTs aligned to business strategy.
+Managed through investment themes and strategic Epics.
+Senior leadership and PMO operate here.
+
+**What is a PI? (Program Increment) — Explained Simply**
+A PI is like a "super sprint" that all teams run together.
+Duration: 8–12 weeks (most commonly 10 weeks = 4 sprints + 1 IP sprint)
+Structure:
+• Sprints 1–4: Regular delivery sprints — teams build features
+• Sprint 5 — IP Sprint (Innovation & Planning): No new features. Teams use this for:
+  → Planning the NEXT PI
+  → Fixing technical debt
+  → Exploratory work / innovation
+  → Training and team health
+
+At the end of every PI, the ART demonstrates a fully integrated, working system to stakeholders — like a Sprint Review but for the entire ART.
+
+**PI Planning — The Heart of SAFe**
+PI Planning is a 2-day event held at the START of every PI. It is the most important event in SAFe.
+ALL teams in the ART attend — co-located if possible, virtual if distributed.
+
+**Day 1 — Vision & Team Planning:**
+Morning:
+• Business leadership presents the vision: "Here's where the company is going."
+• Product Management presents the top 10 features for this PI from the Program Backlog
+• System Architect presents any major technical constraints or enablers
+Afternoon:
+• Each team breaks away and drafts their sprint plans for all 4 sprints of the PI
+• Teams identify which features they can commit to
+• Teams identify dependencies: "We can't build Feature X until Team 3 finishes the API"
+
+**Day 2 — Review, Risks & Commit:**
+Morning:
+• Each team presents their draft PI plan to the ENTIRE ART (2 minutes per team)
+• Dependencies between teams are called out and resolved on the Program Board
+• Risks are discussed and ROAMed (see below)
+Afternoon:
+• Teams revise their plans based on feedback
+• Teams finalise their PI Objectives — the specific outcomes they commit to
+• Everyone does a confidence vote: "Fist of Five" — hold up 1–5 fingers
+  → 5 = "Fully confident, let's go!"
+  → 3 = "I think we can do it"
+  → 1 = "I have serious concerns"
+• If average is below 3, the plan is reworked until confidence improves
+
+**Output of PI Planning:**
+✅ PI Objectives for every team (5–10 committed outcomes per team)
+✅ Program Board showing all deliverables, dependencies, and milestones
+✅ ROAM Risk Log (see below)
+✅ A shared release calendar for the entire PI
+
+**The Program Board — Visualising the ART**
+The Program Board is a large physical or digital board showing:
+• Rows: Each team's sprint-by-sprint deliverables
+• Columns: Sprint 1, Sprint 2, Sprint 3, Sprint 4, IP Sprint
+• Red strings/arrows: Dependencies between teams
+• Milestones: Fixed external dates (client launch, regulatory deadline)
+
+PM Action: Review the Program Board every week in the ART Sync meeting. Any dependency turning red = escalate immediately.
+
+**ROAM — Managing Risks in SAFe**
+During PI Planning, every identified risk is ROAMed — classified into one of 4 buckets:
+
+| Letter | Meaning | Action |
+|--------|---------|--------|
+| R — Resolved | Risk is eliminated during PI Planning | No further action needed |
+| O — Owned | Someone takes ownership to manage it | Assigned to an owner with a plan |
+| A — Accepted | Risk is acknowledged, no mitigation possible | Documented, monitored |
+| M — Mitigated | A plan is in place to reduce the risk | Action underway |
+
+Example:
+Risk: "Team 4's API may not be ready in time for Team 2's integration in Sprint 2."
+ROAM: Owned → Team 4's Tech Lead owns it. They commit to delivering a mock API by end of Sprint 1 so Team 2 can begin integration testing.
+
+**Key SAFe Ceremonies (Meetings):**
+
+🕐 **ART Sync (Weekly, 30–60 minutes)**
+All teams' representatives meet to discuss cross-team progress, dependencies, and blockers.
+PM/RTE facilitates. Any red dependency on the Program Board is discussed and actioned.
+
+🕐 **System Demo (End of each Sprint, 1–2 hours)**
+All teams TOGETHER demonstrate their integrated work to stakeholders.
+Unlike a Sprint Review (one team), the System Demo shows the FULL product.
+Stakeholders see how all the pieces fit together every 2 weeks.
+
+🕐 **Inspect & Adapt (End of PI, half day)**
+The ART's version of a Retrospective — but for the entire PI.
+Three parts:
+1. PI System Demo: Show everything built in the PI
+2. Quantitative measurement: Review PI Predictability, velocity trends, quality metrics
+3. Problem-solving workshop: Use root cause analysis to identify the top improvement
+
+🕐 **Scrum of Scrums (2–3x per week, 15–30 minutes)**
+Representatives from each team (usually Scrum Masters) meet to surface and resolve cross-team blockers.
+Run by the RTE/PM. Each team answers: Progress? Plan? Blockers that affect OTHER teams?
+
+**SAFe Metrics Every PM Must Know:**
+
+📌 **PI Predictability**
+Formula: (PI Objectives achieved ÷ Total PI Objectives committed) × 100
+Target: ≥ 80%
+Example: ART committed to 50 objectives across all teams, delivered 43 → Predictability = 86% ✅
+
+📌 **Program Velocity**
+Total story points delivered across ALL teams in the PI.
+Trend matters more than absolute number — it should be stable or improving PI over PI.
+
+📌 **Feature Cycle Time**
+Time from a feature being approved (entering Program Backlog) to being deployed to production.
+Lower = faster time to market = happier business.
+
+📌 **Load vs Capacity**
+At PI Planning, teams estimate their capacity (accounting for shrinkage, holidays, training).
+Load = total story points of work planned.
+Healthy: Load ≤ Capacity. Overloaded teams always underdeliver.
+
+**Scrum vs SAFe — Key Differences:**
+
+| Aspect | Scrum | SAFe |
+|--------|-------|------|
+| Team size | 5–9 people | 50–125 people (ART) |
+| Timebox | 2-week sprint | 8–12 week PI |
+| Planning | Sprint Planning | PI Planning (2 days) |
+| Demo | Sprint Review | System Demo + PI Demo |
+| Retrospective | Sprint Retro | Inspect & Adapt |
+| Roles | PO, SM, Dev Team | RTE, Product Manager, System Architect + all Scrum roles |
+| Dependency mgmt | Minimal | Program Board |
+
+**Interview Answer for "How do you apply SAFe in your work?"**
+"I've applied SAFe at the Program Level to coordinate delivery across multiple Agile teams. My key responsibility was facilitating PI Planning — the 2-day event where all teams align on objectives, map cross-team dependencies on the Program Board, and ROAM risks together. I run weekly ART Syncs and Scrum of Scrums to surface and resolve dependency blockers before they cascade. I track PI Predictability targeting ≥ 80% objectives met per PI, and use the Inspect & Adapt workshop at PI end to drive measurable process improvement. SAFe gave us the structure to scale from 2 teams to 6 teams without losing delivery discipline or client confidence."`
       }
     ]
   },
